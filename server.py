@@ -4,10 +4,12 @@
 
 import json
 import os
+import ssl
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from socketserver import ThreadingMixIn
 from urllib.parse import urlparse
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parent
 DATA_FILE = ROOT / "data" / "report.json"
@@ -40,7 +42,44 @@ class Handler(SimpleHTTPRequestHandler):
         if parsed.path in ("/api/report", "/api/report.json"):
             self._send_json_file()
             return
+        if parsed.path.startswith("/info/"):
+            self._proxy_uimp(parsed.path)
+            return
         super().do_GET()
+
+    def _proxy_uimp(self, path):
+        """把 /info/ 回源到官方站，避免浏览器直连 405，也避免 Python 静态目录 404。"""
+        url = "https://uimp.cas.org.cn" + path
+        req = Request(
+            url,
+            headers={
+                "User-Agent": "Mozilla/5.0",
+                "Referer": "https://uimp.cas.org.cn/info/",
+                "Origin": "https://uimp.cas.org.cn",
+            },
+        )
+        ctx = ssl.create_default_context()
+        try:
+            resp = urlopen(req, timeout=30, context=ctx)
+            raw = resp.read()
+            content_type = resp.headers.get("Content-Type") or "application/octet-stream"
+            resp.close()
+        except Exception as exc:
+            self.send_error(502, "回源失败: %s" % exc)
+            return
+
+        if "css" in content_type or path.endswith(".css"):
+            text = raw.decode("utf-8", "replace")
+            text = text.replace("https://uimp.cas.org.cn/info", "/info")
+            text = text.replace("url(/images/cxcasorgcn/", "url(/info/images/cxcasorgcn/")
+            raw = text.encode("utf-8")
+            content_type = "text/css; charset=utf-8"
+
+        self.send_response(200)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(raw)))
+        self.end_headers()
+        self.wfile.write(raw)
 
     def do_POST(self):
         parsed = urlparse(self.path)
