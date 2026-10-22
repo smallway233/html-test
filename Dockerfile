@@ -18,6 +18,7 @@ COPY . /app
 
 RUN chmod +x /start.sh \
     && mkdir -p /app/data /var/lib/nginx/tmp /run/nginx \
+    && cp /app/data/report.json /app/report.default.json \
     && chown -R app:app /app \
     && chown -R nginx:nginx /var/lib/nginx /run/nginx
 

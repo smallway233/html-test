@@ -446,7 +446,7 @@
     <script src="assets/js/qrcode/qrcode.js"></script>
     <script src="js/receipt.js"></script>
     <script type="text/javascript">
-        ReceiptApp.loadReport("data/report.json")
+        ReceiptApp.loadReport("api/report?_=" + Date.now())
             .then(function (data) {
                 ReceiptApp.renderReceipt(data);
             })

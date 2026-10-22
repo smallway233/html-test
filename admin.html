@@ -426,9 +426,9 @@
     async function loadData() {
       setStatus("加载中...");
       try {
-        var data = await ReceiptApp.loadReport(apiUrl("data/report.json"));
+        var data = await ReceiptApp.loadReport(apiUrl("api/report"));
         fillForm(data);
-        setStatus("已加载 data/report.json", "ok");
+        setStatus("已加载备案数据", "ok");
       } catch (e) {
         setStatus(e.message || String(e), "err");
       }

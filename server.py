@@ -39,54 +39,67 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urlparse(self.path)
-        if parsed.path in ("/api/report", "/api/report.json"):
+        if parsed.path in ("/api/report", "/api/report.json", "/data/report.json"):
             self._send_json_file()
             return
         if parsed.path.startswith("/info/"):
-            self._proxy_uimp(parsed.path)
+            self._proxy_uimp(self.path)
             return
         super().do_GET()
-
-    def _proxy_uimp(self, path):
-        """把 /info/ 回源到官方站，避免浏览器直连 405，也避免 Python 静态目录 404。"""
-        url = "https://uimp.cas.org.cn" + path
-        req = Request(
-            url,
-            headers={
-                "User-Agent": "Mozilla/5.0",
-                "Referer": "https://uimp.cas.org.cn/info/",
-                "Origin": "https://uimp.cas.org.cn",
-            },
-        )
-        ctx = ssl.create_default_context()
-        try:
-            resp = urlopen(req, timeout=30, context=ctx)
-            raw = resp.read()
-            content_type = resp.headers.get("Content-Type") or "application/octet-stream"
-            resp.close()
-        except Exception as exc:
-            self.send_error(502, "回源失败: %s" % exc)
-            return
-
-        if "css" in content_type or path.endswith(".css"):
-            text = raw.decode("utf-8", "replace")
-            text = text.replace("https://uimp.cas.org.cn/info", "/info")
-            text = text.replace("url(/images/cxcasorgcn/", "url(/info/images/cxcasorgcn/")
-            raw = text.encode("utf-8")
-            content_type = "text/css; charset=utf-8"
-
-        self.send_response(200)
-        self.send_header("Content-Type", content_type)
-        self.send_header("Content-Length", str(len(raw)))
-        self.end_headers()
-        self.wfile.write(raw)
 
     def do_POST(self):
         parsed = urlparse(self.path)
         if parsed.path in ("/api/report", "/api/save"):
             self._save_report()
             return
+        if parsed.path.startswith("/info/"):
+            self._proxy_uimp(self.path, method="POST")
+            return
         self.send_error(404, "Not Found")
+
+    def _proxy_uimp(self, raw_path, method="GET"):
+        """把 /info/ 回源到官方站，查询参数必须带上，否则接口会空数据。"""
+        parsed = urlparse(raw_path)
+        url = "https://uimp.cas.org.cn" + parsed.path
+        if parsed.query:
+            url += "?" + parsed.query
+
+        headers = {
+            "User-Agent": "Mozilla/5.0",
+            "Referer": "https://uimp.cas.org.cn/info/",
+            "Origin": "https://uimp.cas.org.cn",
+        }
+        body = None
+        if method == "POST":
+            length = int(self.headers.get("Content-Length", "0") or "0")
+            body = self.rfile.read(length) if length else b""
+            headers["Content-Type"] = self.headers.get("Content-Type") or "application/x-www-form-urlencoded"
+
+        req = Request(url, data=body, headers=headers, method=method)
+        ctx = ssl.create_default_context()
+        try:
+            resp = urlopen(req, timeout=30, context=ctx)
+            raw = resp.read()
+            content_type = resp.headers.get("Content-Type") or "application/octet-stream"
+            status = getattr(resp, "status", 200)
+            resp.close()
+        except Exception as exc:
+            self.send_error(502, "回源失败: %s" % exc)
+            return
+
+        path_only = parsed.path
+        if "css" in content_type or path_only.endswith(".css"):
+            text = raw.decode("utf-8", "replace")
+            text = text.replace("https://uimp.cas.org.cn/info", "/info")
+            text = text.replace("url(/images/cxcasorgcn/", "url(/info/images/cxcasorgcn/")
+            raw = text.encode("utf-8")
+            content_type = "text/css; charset=utf-8"
+
+        self.send_response(status)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(raw)))
+        self.end_headers()
+        self.wfile.write(raw)
 
     def _send_json_file(self):
         if not DATA_FILE.exists():
