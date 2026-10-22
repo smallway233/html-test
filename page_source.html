@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="300">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>中国资产评估协会</title>
+    <link href="/info/Css/style.css" rel="stylesheet" />
+    <script type="text/javascript">window.top.RequestBase = "/info";</script>
+    <script type="text/javascript" src="/info/Js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="/info/Content/cxcasorgcn/base.css">
+    <link rel="stylesheet" href="/info/Content/cxcasorgcn/slick.css">
+    <link rel="stylesheet" href="/info/Content/cxcasorgcn/style.css">
+    <link rel="stylesheet" href="/info/Content/cxcasorgcn/index.css">
+
+    <link href="/info/Js/layui_2.5.5/css/layui.css" rel="stylesheet" />
+    <script src="/info/Js/layui_2.5.5/layui.js"></script>
+    <style>
+        html {
+            background: #FFF;
+            font-size: 62.5%; /* 10÷16=62.5% */
+            background: url(/info/images/cxcasorgcn/bgbig.jpg) top center no-repeat #f0f0f0;
+            background-size: 100% auto;
+        }
+        .search input.notxt1{position:absolute;width: 54px;height: calc(100% - 4px);border:none;background:url(/info/images/cxcasorgcn/search_btn.png) center center no-repeat;right: 3px;cursor: pointer;border-radius: 3px;top: 2px;z-index: 3;}
+    </style>
+    <title>中国资产评估协会</title>
+</head>
+<body>
+    <!--header开始-->
+
+    <header class="header">
+        <div class="wrapTop">
+            <div class="top">
+                <div class="logo">
+                    <a id="logo1" class="logo1" href="http://www.cas.org.cn/index.htm"><img src="/info/images/cxcasorgcn/logo.png" alt=""></a>
+                    <!--<a id="logo2" class="logo2" href="#"><img src="images/logo2.png" alt=""></a>-->
+                </div>
+                <div class="ser">
+                    <form class="search" name="dataForm" action="http://www.cas.org.cn/cms/web/search/index.jsp" target="_blank" method="post" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+                        <input name="siteID" value="3" type="hidden">
+                        <input class="notxt" value="请输入关键字" name="query" type="text" id="keywords" onclick="this.form.keywords.value='';this.form.keywords.style.color='#333'">
+                        <input class="notxt1 btn" name="Submit" type="submit" value="">
+                    </form>
+                </div>
+                <div class="dateTime fs18" id="shijian">上午好！今天是：<font>2022年07月18日 11:48:30  星期一<font></font></font></div>
+                <script type="text/javascript">
+                    function showLocale(obj) {
+                        var str, colorhead, colorfoot;
+                        var yy = obj.getYear(); //获取的年份
+                        if (yy < 1900) { yy = yy + 1900; }
+                        var MM = obj.getMonth() + 1; //获取的月份，加1我初步认为月份是从零开始的
+                        if (MM < 10) { MM = "0" + MM; }
+                        var dd = obj.getDate(); //获取的日期数
+                        if (dd < 10) { dd = "0" + dd; }
+                        var hh = obj.getHours(); //获取的小时数
+                        if (hh < 10) { hh = "0" + hh; }
+                        if (hh < 6) { hol = "凌晨好!" }
+                        else if (hh < 9) { hol = "早上好！" }
+                        else if (hh < 12) { hol = "上午好！" }
+                        else if (hh < 14) { hol = "中午好！" }
+                        else if (hh < 17) { hol = "下午好！" }
+                        else if (hh < 19) { hol = "傍晚好！" }
+                        else if (hh < 22) { hol = "晚上好！" }
+                        else { hol = "夜里好!" }
+
+                        var mm = obj.getMinutes(); //获取的是分钟数
+                        if (mm < 10) { mm = "0" + mm; }
+                        var ss = obj.getSeconds(); //这是秒
+                        if (ss < 10) { ss = "0" + ss; }
+                        var ww = obj.getDay();
+                        if (ww == 0) colorhead = "<font color=\"#FF0000\">";
+                        if (ww > 0 && ww < 6) colorhead = "<font color=\"#373737\">";
+                        if (ww == 6) colorhead = "<font color=\"#008000\">";
+                        if (ww == 0) ww = "星期日";
+                        if (ww == 1) ww = "星期一";
+                        if (ww == 2) ww = "星期二";
+                        if (ww == 3) ww = "星期三";
+                        if (ww == 4) ww = "星期四";
+                        if (ww == 5) ww = "星期五";
+                        if (ww == 6) ww = "星期六";
+                        colorfoot = "<font>";
+                        //alert(ww);
+                        str = hol + "今天是：" + colorhead + yy + "年" + MM + "月" + dd + "日" + " " + hh + ":" + mm + ":" + ss + "  " + ww + colorfoot;
+                        return (str);
+                    }
+                    //function tick() {
+                    //    var today;
+                    //    today = new Date();
+                    //    //alert(today);
+                    //    document.getElementById("shijian").innerHTML = showLocale(today);
+                    //    setTimeout("tick()", 1000);
+                    //}
+                    //tick();
+                    function chg(obj) {
+                        $(obj).parent().siblings("ul").toggle();
+                        $(obj).toggleClass("biope");
+                    }
+                </script>
+                <div class="slogan"><img src="/info/images/cxcasorgcn/top_slogan.png"></div>
+            </div>
+        </div>
+        <div class="nav_box">
+            <nav class="nav">
+                <ul>
+                    <li class=""><a href="http://www.cas.org.cn/index.htm">首&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
+
+                    <li>
+                        <a href="http://www.cas.org.cn/xhjs/index.htm">协会介绍</a>
+                        <div class="subNav">
+                            <dl>
+                                <dd><a href="http://www.cas.org.cn/xhjs/xhjj/index.htm">协会简介</a></dd>
+                                <dd><a href="http://www.cas.org.cn/xhjs/ldcy/index.htm">领导成员</a></dd>
+                                <dd><a href="http://www.cas.org.cn/xhjs/xhzc/index.htm">协会章程</a></dd>
+                                <dd><a href="http://www.cas.org.cn/xhjs/zzjg/index.htm">组织机构</a></dd>
+                                <dd><a href="http://www.cas.org.cn/xhjs/xhdsj/index.htm">协会大事记</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <a href="http://www.cas.org.cn/xwbd/index.htm">新闻报道</a>
+                        <div class="subNav">
+                            <dl>
+                                <dd><a href="http://www.cas.org.cn/xwbd/xyyw/index.htm">要闻</a></dd>
+                                <dd><a href="http://www.cas.org.cn/xwbd/xydt/index.htm">协会工作</a></dd>
+                                <dd><a href="http://www.cas.org.cn/xwbd/zhxx/index.htm">媒体传真</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+
+
+                    <li class="">
+                        <a href="http://www.cas.org.cn/fgzd/index.htm">法规制度</a>
+                        <div class="subNav">
+                            <dl>
+                                <dd><a href="http://www.cas.org.cn/fgzd/flfgk/index.htm">法律法规</a></dd>
+                                <dd><a href="http://www.cas.org.cn/fgzd/pgzc/index.htm">评估准则</a></dd>
+                                <dd><a href="http://www.cas.org.cn/fgzd/zjts/index.htm">专家指引</a></dd>
+                                <dd><a href="http://www.cas.org.cn/fgzd/czzy/index.htm">操作指引</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <a href="http://www.cas.org.cn/ksgl/index.htm">资格考试</a>
+                        <div class="subNav">
+                            <dl>
+                                <dd><a href="http://www.cas.org.cn/ksgl/kszc/index.htm">考试制度</a></dd>
+                                <dd><a href="http://www.cas.org.cn/ksgl/ksdt/index.htm">考试动态</a></dd>
+                                <dd><a href="http://www.cas.org.cn/ksgl/zbpgsks/index.htm">珠宝评估师考试</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+
+
+                    <li class="">
+                        <a href="http://www.cas.org.cn/ygl1/index.htm">会员管理</a>
+                        <div class="subNav">
+                            <dl>
+                                <dd><a href="http://www.cas.org.cn/hygl1/hyglgd/index.htm">会员管理制度</a></dd>
+                                <dd><a href="http://www.cas.org.cn/hygl1/zshyjs/index.htm">资深会员介绍</a></dd>
+                                <dd><a href="http://www.cas.org.cn/hygl1/zcpgjgzhpj/index.htm">资产评估机构综合评价</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+
+
+                    <li class=""><a href="http://www.cas.org.cn/zqyj1/index.htm">债券研究</a></li>
+
+                    <li class="">
+                        <a href="http://www.cas.org.cn/gjjl/index.htm">国际交流</a>
+                        <div class="subNav">
+                            <dl>
+                                <dd><a href="http://www.cas.org.cn/gjjl/dwjl/index.htm">对外交流</a></dd>
+                                <dd><a href="http://www.cas.org.cn/gjjl/kcbg/index.htm">国际组织介绍</a></dd>
+                                <dd><a href="http://www.cas.org.cn/gjjl/gjdt/index.htm">国际动态</a></dd>
+                                <dd><a href="http://www.cas.org.cn/gjjl/gjywzjk/index.htm">国际业务专家库</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- 移动端主导航 -->
+        <section class="mobile">
+            <div class="mobile-inner-header">
+                <div class="mobile-inner-header-icon mobile-inner-header-icon-out">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="mobile-inner-nav">
+                <ul>
+                    <li><a href="http://www.cas.org.cn/index.htm" style="animation-delay: 0s;">首页</a></li>
+                    <li>
+                        <a href="http://www.cas.org.cn/xhjs/index.htm" style="animation-delay: 0.05s;">协会介绍</a><strong>+</strong>
+                        <dl class="mobile_subNav">
+                            <dd><a href="http://www.cas.org.cn/xhjs/xhjj/index.htm" style="animation-delay: 0.1s;">协会简介</a></dd>
+                            <dd><a href="http://www.cas.org.cn/xhjs/ldcy/index.htm" style="animation-delay: 0.15s;">领导成员</a></dd>
+                            <dd><a href="http://www.cas.org.cn/xhjs/xhzc/index.htm" style="animation-delay: 0.2s;">协会章程</a></dd>
+                            <dd><a href="http://www.cas.org.cn/xhjs/zzjg/index.htm" style="animation-delay: 0.25s;">组织机构</a></dd>
+                            <dd><a href="http://www.cas.org.cn/xhjs/xhdsj/index.htm" style="animation-delay: 0.3s;">协会大事记</a></dd>
+                            <dd><a href="http://www.cas.org.cn/xhjs/hczc/index.htm" style="animation-delay: 0.35s;">会长之窗</a></dd>
+
+                        </dl>
+                    </li>
+                    <li>
+                        <a href="http://www.cas.org.cn/xwbd/index.htm" style="animation-delay: 0.4s;">新闻报道</a><strong>+</strong>
+                        <dl class="mobile_subNav">
+                            <dd><a href="http://www.cas.org.cn/xwbd/xyyw/index.htm" style="animation-delay: 0.45s;">要闻</a></dd>
+                            <dd><a href="http://www.cas.org.cn/xwbd/xydt/index.htm" style="animation-delay: 0.5s;">协会工作</a></dd>
+                            <dd><a href="http://www.cas.org.cn/xwbd/zhxx/index.htm" style="animation-delay: 0.55s;">媒体传真</a></dd>
+
+                        </dl>
+                    </li>
+                    <li>
+                        <a href="http://www.cas.org.cn/fgzd/index.htm" style="animation-delay: 0.6s;">法规制度</a><strong>+</strong>
+                        <dl class="mobile_subNav">
+                            <dd><a href="http://www.cas.org.cn/fgzd/flfgk/index.htm" style="animation-delay: 0.65s;">法律法规</a></dd>
+                            <dd><a href="http://www.cas.org.cn/fgzd/pgzc/index.htm" style="animation-delay: 0.7s;">评估准则</a></dd>
+                            <dd><a href="http://www.cas.org.cn/fgzd/zjts/index.htm" style="animation-delay: 0.75s;">专家指引</a></dd>
+                            <dd><a href="http://www.cas.org.cn/fgzd/czzy/index.htm" style="animation-delay: 0.8s;">操作指引</a></dd>
+
+                        </dl>
+                    </li>
+                    <li>
+                        <a href="http://www.cas.org.cn/ksgl/index.htm" style="animation-delay: 0.85s;">资格考试</a><strong>+</strong>
+                        <dl class="mobile_subNav">
+                            <dd><a href="ksgl/kszc/index.htm" style="animation-delay: 0.9s;">考试制度</a></dd>
+                            <dd><a href="ksgl/ksdt/index.htm" style="animation-delay: 0.95s;">考试动态</a></dd>
+                            <dd><a href="ksgl/zbpgsks/index.htm" style="animation-delay: 1s;">珠宝评估师考试</a></dd>
+
+                        </dl>
+                    </li>
+                    <li>
+                        <a href="http://www.cas.org.cn/hygl1/index.htm" style="animation-delay: 1.05s;">会员管理</a><strong>+</strong>
+                        <dl class="mobile_subNav">
+                            <dd><a href="http://www.cas.org.cn/hygl1/hyglgd/index.htm" style="animation-delay: 1.1s;">会员管理制度</a></dd>
+                            <dd><a href="http://www.cas.org.cn/hygl1/zshyjs/index.htm" style="animation-delay: 1.15s;">资深会员介绍</a></dd>
+                            <dd><a href="http://www.cas.org.cn/hygl1/zcpgjgzhpj/index.htm" style="animation-delay: 1.2s;">资产评估机构综合评价</a></dd>
+
+                        </dl>
+                    </li>
+                    <li><a href="http://www.cas.org.cn/zqyj1/index.htm" style="animation-delay: 1.25s;">债券研究</a></li>    
+                    <li>
+                        <a href="http://www.cas.org.cn/gjjl/index.htm" style="animation-delay: 1.3s;">国际交流</a><strong>+</strong>
+                        <dl class="mobile_subNav">
+                            <dd><a href="http://www.cas.org.cn/gjjl/dwjl/index.htm" style="animation-delay: 1.35s;">对外交流</a></dd>
+                            <dd><a href="http://www.cas.org.cn/gjjl/kcbg/index.htm" style="animation-delay: 1.4s;">国际组织介绍</a></dd>
+                            <dd><a href="http://www.cas.org.cn/gjjl/gjdt/index.htm" style="animation-delay: 1.45s;">国际动态</a></dd>
+                            <dd><a href="http://www.cas.org.cn/gjjl/gjywzjk/index.htm" style="animation-delay: 1.5s;">国际业务专家库</a></dd>
+
+                        </dl>
+                    </li>
+                </ul>
+                <div class="m_links">
+                    <a href="http://www.cas.org.cn/ENGLISH/index.htm" style="animation-delay: 1.55s;">EN</a> | <a href="https://qiye.163.com/login/" style="animation-delay: 1.6s;">邮箱登录</a>
+                </div>
+                <div class="mobile_search">
+                    <form name="dataForm" class="search" action="/cms/web/search/index.jsp" target="_blank" method="post" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+                        <input name="siteID" value="3" type="hidden">
+                        <input class="notxt1" name="Submit" type="submit" value="">
+                        <input class="notxt" value="search" name="query" type="text" id="keywords" onfocus="if(value==defaultValue){value='';}" onblur="if(!value){value=defaultValue;}" onclick="if(this.value==''){this.value='';this.form.keywords.style.color='#fff'}">
+                    </form>
+                </div>
+            </div>
+        </section>
+    </header>
+    <!--header结束 -->
+
+    <div class="wrap_content">
+        
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link href="/info/Content/cxcasorgcn/media_Code.css?r=1.0.0.1" rel="stylesheet" />
+<script type="text/javascript" src="/info/Js/ping.js"></script>
+
+<div class="w_contents">
+    <div style="width: 800px; height: auto; display: block; margin: auto; background-color: white;" id="QrCodedc">
+        <div style="width: 600px; height: auto; padding-top: 20px; display: block; margin: auto; background-color: white; " id="QrCode">
+            <style>
+                table {
+                    border-collapse: collapse;
+                    border: solid #999;
+                    border-width: 1px 0 0 1px;
+                }
+
+                    table caption {
+                        font-size: 14px;
+                        font-weight: bolder;
+                    }
+
+                    table th, table td {
+                        border: solid #999;
+                        border-width: 0 1px 1px 0;
+                        padding: 2px;
+                        line-height: 30px;
+                        background-color: white;
+                    }
+
+                span.qname {
+                    width: 55px;
+                    display: block;
+                    float: left;
+                }
+
+                span.qtype {
+                    width: 137px;
+                    display: block;
+                    float: left;
+                }
+            </style>
+            <div style="width: 100%; margin: auto; font-size: 28px; text-align: center; background-color: white; font-family: '方正小标宋简体';" id="Qrtop">
+                中国资产评估协会
+            </div>
+            <div style="width: 100%; margin: auto; font-size: 21px; text-align: center; padding-top: 20px; padding-bottom: 20px; background-color: white; font-family: '方正小标宋简体';">
+                资产评估业务报告备案回执
+            </div>
+            <table style="width: 550px; height: auto; margin-top: 19px; font-size: 17px; margin: auto; ">
+                <tr>
+                    <td style="text-align: right; width: 140px; font-family: '黑体';" class="texttd">报告编码：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="ReportCode texttd"></td>
+                </tr>
+                <tr class="specialhide" style="display:none;">
+                    <td style="text-align: center; width: 100%; height: 400px; font-family: '仿宋';" colspan="2"></td>
+                </tr>
+                <tr class="specialshow">
+                    <td style="text-align: right; width: 140px; font-family: '黑体';" class="texttd">合同编号：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="ContractCode texttd"></td>
+                </tr>
+                <tr class="specialshow">
+                    <td style="text-align: right; width: 140px; font-family: '黑体';" class="texttd">报告类型：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="ReportType texttd"></td>
+                </tr>
+                <tr class="specialshow">
+                    <td style="text-align: right; width: 140px; font-family: '黑体';" class="texttd">报告文号：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="ReportNumber texttd"></td>
+                </tr>
+                <tr class="specialshow">
+                    <td style="text-align: right; width: 140px; font-family: '黑体'; " class="texttd">报告名称：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="ReportName texttd"></td>
+                </tr>
+                <tr class="specialshow">
+                    <td style="text-align: right; width: 140px; font-family: '黑体';" class="texttd">评估结论：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="EvaluationConclusion texttd"></td>
+                </tr>
+                <tr class="specialshow">
+                    <td style="text-align: right; width: 140px; font-family: '黑体';" class="texttd">评估报告日：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="ReportData texttd"></td>
+                </tr>
+                <tr class="ReportOpinionTr specialshow">
+                    <td style="text-align: right; width: 140px; font-family: '黑体';" class="texttd">评估机构名称：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="OrgName texttd"></td>
+                </tr>
+                <tr class="specialshow">
+                    <td style="text-align: right; width: 140px; font-family: '黑体'; " class="texttd">签名人员：</td>
+                    <td style="padding-left: 20px; font-family: '仿宋';" class="ReportSignatory texttd"></td>
+                </tr>
+                <tr style="height:200px">
+                    <td style="text-align: center; font-size: 15px;" colspan="2" id="_QRImg">
+                        <div id="qrcode" style="width: 130px; height: 130px; margin: 0 auto; margin-top: 18px; text-align: center; ">
+                        </div>
+                        <span style="margin-top: 10px; font-size: 16px; display: block; font-family: '仿宋'; ">(可扫描二维码查询备案业务信息)</span>
+                    </td>
+                </tr>
+            </table>
+            <div style="width: 88%; margin: auto; font-size: 16px; line-height: 19px; margin-top: 3px; background-color: white; font-family: '楷体'; " class="footdiv">
+                说明：报告备案回执仅证明此报告已在业务报备管理系统进行了备案，不作为协会对该报告认证、认可的依据，也不作为资产评估机构及其签字资产评估专业人员免除相关法律责任的依据。
+            </div>
+            <div style="width: 88%; margin: auto; text-align: right; font-size: 16px; line-height: 25px; margin-top: 22px; background-color: white; font-family: '仿宋';" class="CreateDateclass">
+                加载中...
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <footer>
+        <div class="row">
+            <div class="lf">
+                <a target="_blank" href="https://bszs.conac.cn/sitename?method=show&amp;id=29BD574BAB6673EAE053012819AC3649" class="blue"><img src="/info/images/cxcasorgcn/footer_blue.png"></a>
+                <p>网站管理：中评协对外宣传部  技术支持：中评协信息会员部</p>
+                <p>电子邮箱：it@cas.org.cn  邮编：100045  电话：010-88014204</p>
+                <p>地址：北京市西城区三里河东路5号中商大厦16层</p>
+                <p>(自2005年8月1日起)  <a style="color: rgba(255,255,255,.7);" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index">京ICP备2020034749号</a></p>
+                <p>中国资产评估协会版权所有，如需转载，请注明来源</p>
+            </div>
+            <div class="md">
+                <div class="box">
+                    <img src="/info/images/cxcasorgcn/footer_code1.png">
+                    <p>欢迎关注财政部</p>
+                    <p>官方微信公众平台</p>
+                </div>
+                <div class="box">
+                    <img src="/info/images/cxcasorgcn/footer_code2.png">
+                    <p>欢迎关注中评协</p>
+                    <p>官方微信公众平台</p>
+                </div>
+            </div>
+            <div class="rt">
+                
+                <div class="select_link">
+                    <div class="arrow"></div>
+                    <a href="http://www.cas.org.cn/lxwm/index.htm">联系我们</a>
+
+                    <!--
+                    <div class="alert_box">
+                                                             <li><a href="lxwm/zpxtxl/index.htm">中评协通讯录</a></li>
+                                                             <li><a href="lxwm/dfpxtxl/index.htm">地方评协通讯录</a></li>
+
+                                    </div>
+
+                    -->
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </footer>
+
+
+    <script>function createHttpRequest() { if (window.XMLHttpRequest) { return new XMLHttpRequest() } else { if (window.ActiveXObject) { return new ActiveXObject("Microsoft.XMLHTTP") } } } function myPost(url, data, fn) { var req = createHttpRequest(); req.open("POST", url, true); req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); req.onreadystatechange = function () { if (req.readyState == 4 && (req.status == 200 || req.status == 304)) { if (fn) { fn.call(this, req.responseText) } } }; req.send(toParam(data)) } function myGet(url, fn) { var req = createHttpRequest(); req.open("GET", url, true); req.onreadystatechange = function () { if (req.readyState == 4 && req.status == 200 || req.status == 304) { if (fn) { fn.call(this, JSON.parse(req.responseText)) } } }; req.send() } function toParam(data) { var str = ""; if (data) { var dk; for (var key in data) { try { dk = filter034(data[key]); str += key + "=" + dk + "&" } catch (e) { } } str = str.slice(0, -1) } return str } function filter034(param) { try { if (param) { if (param.toString().indexOf('&#034;') > -1) { return param.toString().replaceAll('&#034;', '') } } } catch (e) { console.log(e) } return param } var Ajax = { get: function (url, data, fn) { url = url + "?" + toParam(data); myGet(url, fn) }, post: function (url, data, fn) { myPost(url, data, fn) } }; var collect = function (data) { try { var organId = "fb04cb02924143918198eb46d78846cc"; var organName = "中国资产评估协会"; var siteId = encodeURI("3"); var siteName = encodeURI("中国资产评估协会"); var channelId = encodeURI("150"); var channelName = encodeURI("首页"); var articleId = encodeURI("$curArticle.id"); var articleName = encodeURI("$curArticle.name"); var url = location.href; if (!organId || !organName) { return } data.organId = organId; data.organName = organName; if (!siteId || !siteName) { return } data.siteId = siteId; data.siteName = siteName; if (channelId && channelName) { data.channelId = channelId; data.channelName = channelName } if (articleId && articleName) { data.articleId = articleId; data.articleName = articleName } if (url) { data.url = url } return data } catch (e) { } }; var req1 = function (url, data) { Ajax.post(url, data, function (re) { }) }; var req2 = function (url, data) { Ajax.get(url, data, function (re) { try { document.getElementById("visit_count").innerHTML = re.body.visitCount } catch (e) { } }) }; var collect1 = function (data) { var url = "https://cloud.gpowersoft.com/collector/visit/write"; req1(url, data) }; var collect2 = function (data) { var url = "https://cloud.gpowersoft.com/collector/visit/total/article/get"; var countData = {}; countData.organId = data.organId; countData.siteId = data.siteId; countData.articleId = data.articleId; req2(url, countData) }; var visitTime; var ready123 = function () { try { var data = {}; data.duration = 10000; data = collect(data); collect1(data); collect2(data); visitTime = new Date().getTime() } catch (e) { console.log(e.message) } }; ready123(); var flag = false; window.onbeforeunload = function () { try { flag = true; var data = {}; var now = new Date().getTime(); if (visitTime && now > visitTime) { data.duration = now - visitTime; data = collect(data); collect1(data) } } catch (e) { console.log(e.message) } };</script><div class="gotop"></div>
+    <script src="/info/Js/cxcasorgcn/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="/info/Js/cxcasorgcn/slick.js" type="text/javascript"></script>
+    <script src="/info/Js/cxcasorgcn/script.js" type="text/javascript"></script>
+    <script src="/info/Js/cxcasorgcn/index.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //$.getJSON('http://www.cas.org.cn/common/newarticle.json', function (data) {
+        //    var html1 = '';
+        //    $(data.data).each(function () {
+        //        html1 += '<li><a href="' + this.url + '" title="' + this.title + '" class="fs18">' + this.title + '</a></li>'
+        //    })
+        //    $('.right_side .part:first-child ul').html(html1)
+        //})
+    </script>
+    <script type="text/javascript" src="/info/Js/cxcasorgcn/g_index.js"></script>
+    <!-- 页脚会再次加载 jQuery，这里重新挂上二维码插件后再渲染 -->
+    <script src="assets/js/qrcode/utf.js"></script>
+    <script src="assets/js/qrcode/jquery.qrcode.js"></script>
+    <script src="assets/js/qrcode/qrcode.js"></script>
+    <script src="js/receipt.js"></script>
+    <script type="text/javascript">
+        ReceiptApp.loadReport("data/report.json")
+            .then(function (data) {
+                ReceiptApp.renderReceipt(data);
+            })
+            .catch(function (err) {
+                $(".CreateDateclass").html("数据加载失败，请确认已用 python server.py 启动");
+                console.error(err);
+            });
+    </script>
+</body>
+</html>

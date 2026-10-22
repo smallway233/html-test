@@ -1,0 +1,15 @@
+[Unit]
+Description=CAS Receipt Local Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/cas-receipt
+Environment=PORT=8765
+ExecStart=/usr/bin/python3 /opt/cas-receipt/server.py
+Restart=always
+RestartSec=3
+User=root
+
+[Install]
+WantedBy=multi-user.target

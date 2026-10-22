@@ -1,0 +1,14 @@
+services:
+  receipt:
+    build: .
+    image: cas-receipt:amd64
+    platform: linux/amd64
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8765:8765"
+      - "127.0.0.1:8088:80"
+    volumes:
+      - ./data:/app/data
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "8765"

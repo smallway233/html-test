@@ -1,0 +1,33 @@
+{
+  "ReportStatus": "正常",
+  "IsSecurity": 0,
+  "ReportCode": "1515220003202600050",
+  "ContractCode": "ZPX-ZC-2026-015号",
+  "ReportType": "法定评估业务资产评估报告",
+  "ReportNumber": "内中评信评报字[2026]第040号",
+  "ReportName": "内蒙古亿峰源农水开发有限公司拟转让内蒙古凯通科技有限公司21%股权所涉及的股东部分权益市场价值评估项目资产评估报告",
+  "EvaluationConclusion": "1,076,395.49元",
+  "ReportTime": "2026年09月28日",
+  "OrgName": "内蒙古中评信房地产资源资产评估测绘有限公司",
+  "ApplyTime": "2026年10月22日",
+  "signatories": [
+    {
+      "name": "赵静萱",
+      "type": "资产评估师",
+      "numberLabel": "正式会员编号",
+      "number": "15240054"
+    },
+    {
+      "name": "李振宇",
+      "type": "资产评估师",
+      "numberLabel": "见习会员编号",
+      "number": "15240089"
+    }
+  ],
+  "qr": {
+    "mode": "custom",
+    "customUrl": "http://cas.zetatrd.com/receipt/page_source.html",
+    "size": 130,
+    "logo": "assets/images/logo.jpg"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "msg": "https://uimp.cas.org.cn/info/tongyibianma/AuthenticationUpdate?Id=",
+  "data": {
+    "SnowflakeId": 18051215459935232,
+    "ReportId": 0,
+    "IsSecurity": 0,
+    "ReportStatus": "正常",
+    "ReportName": "内蒙古亿峰源农水开发有限公司拟转让内蒙古凯通科技有限公司21%股权所涉及的股东部分权益市场价值评估项目资产评估报告",
+    "ReportTime": "2026年09月28日",
+    "OrgName": "内蒙古中评信房地产资源资产评估测绘有限公司",
+    "ReportCode": "1515220003202600049",
+    "ReportType": "法定评估业务资产评估报告",
+    "EvaluationConclusion": "1,076,395.49元",
+    "ContractCode": "ZPX-ZC-2026-015号",
+    "ReportNumber": "内中评信评报字[2026]第040号",
+    "ReportSignatory": "</br><span class='qname'>赵静萱</span><span class='qtype'>（资产评估师）</span><span class='qnumber'>正式会员编号：15240054</span></br><span class='qname'>李振宇</span><span class='qtype'>（资产评估师）</span><span class='qnumber'>见习会员编号：15240089</span>",
+    "ApplyTime": "2026年09月28日",
+    "IsAuthentication": "赵静萱、李振宇暂未认可",
+    "ReportNatureIs119": false,
+    "IsSecurities": 0,
+    "ReportSignatory1": null,
+    "ReportSignatory2": null,
+    "ReportSignatory3": null
+  }
+}
